@@ -1,0 +1,25 @@
+{% extends 'poll/base_poll.html' %}
+
+
+{% block title%}
+    Poll application - answers for the question "{{ detail.question_text }}"
+{% endblock %}
+
+{% block content%}
+    <h1 class="mb-10">Answers for the question '{{ detail.question_text }}'</h1>
+    <p>was published: {{ detail.time_poll  }}</p>
+
+
+
+    {% for answer in detail.choice_set.all %}
+
+  <div class="card mb-4" style="width: 45rem;">
+            <div class="card-body">
+                <p class="card-text">{{ answer.choice_text }}, was voted {{ answer.choice_time }}</p>
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+{% endblock %}

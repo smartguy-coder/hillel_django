@@ -1,0 +1,20 @@
+{% extends 'poll/base_poll.html' %}
+
+
+{% block title%}
+    Poll application - all questions
+{% endblock %}
+
+{% block content%}
+    <h1 class="mb-10">All questions</h1>
+    {% for question in questions %}
+        <div class="card mb-4" style="width: 45rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ question.question_text}}</h5>
+                <p class="card-text">{{ question.time_poll }}, id={{ question.id }}, number of answers: {{ question.choice_set.count }}</p>
+                <a href="{% url 'question_details' question.id %}" class="btn btn-primary">Go to see answers for this question</a>
+            </div>
+        </div>
+
+    {% endfor %}
+{% endblock %}
